@@ -11,6 +11,7 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchemas";
 import { z } from "zod";
+import ErrorMessage from "@/app/components/ErrorMessage";
 
 /* interface IssueForm {
   title: string;
@@ -58,11 +59,7 @@ const NewIssuePage = () => {
           {/* ...register 4 property-t ad vissza, ezért kell a ...(spread) operator */}
           <TextField.Input placeholder="Title" {...register("title")} />
         </TextField.Root>
-        {errors.title && (
-          <Text color="red" as="p">
-            {errors.title.message}
-          </Text>
-        )}
+        <ErrorMessage>{errors.title?.message}</ErrorMessage>
         {/* SimpleMDE nem támogat additional props-okat, emiatt a Controller kell
       a field prop ugyanazt adja vissza mint a register*/}
         <Controller
@@ -72,11 +69,8 @@ const NewIssuePage = () => {
             <SimpleMDE placeholder="Description" {...field} />
           )}
         />
-        {errors.description && (
-          <Text color="red" as="p">
-            {errors.description.message}
-          </Text>
-        )}
+        <ErrorMessage>{errors.description?.message}</ErrorMessage>
+
         <Button>Submit New Issue</Button>
       </form>
     </div>
