@@ -5,7 +5,6 @@ import { Issue, Status } from "@prisma/client";
 import IssueActions from "./IssueActions";
 import NextLink from "next/link";
 import { ArrowDownIcon, ArrowUpIcon } from "@radix-ui/react-icons";
-import { useState } from "react";
 
 interface Props {
   searchParams: { status: Status; orderBy: keyof Issue };
